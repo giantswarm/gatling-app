@@ -6,5 +6,5 @@ home: https://github.com/gatling/gatling
 icon: https://gatling.io/wp-content/uploads/2019/04/logo-gatling-transparent@15x.svg
 name: gatling-app
 sources:
-- https://github.com/inlets/inlets
+- https://github.com/gatling/gatling
 version: [[ .Version ]]
