@@ -1,0 +1,18 @@
+name: gatling
+
+pod:
+  userID: 1000
+  groupID: 1000
+  restartPolicy: OnFailure
+
+image:
+  registry: quay.io
+  repo: giantswarm/gatling
+  tag: 3.2.1
+
+simulation:
+  # the URL is a Gatling simulation configuration which must
+  # be hosted at an accessible location.
+  url: "https://github.com/giantswarm/nginx-ingress-controller-app/raw/better-testing/test/kat/NginxSimulation.scala"
+  # the name of the simulation to run.
+  name: "nginx.NginxSimulation.scala"

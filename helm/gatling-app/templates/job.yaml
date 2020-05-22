@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  job: {{ .Values.name }}
+spec:
+  backoffLimit: 5
+  completions: 1
+  parallelism: 1
+  template:
+    metadata:
+      job: {{ .Values.name }}
+    spec:
+      serviceAccountName: {{ .Values.name }}
+      securityContext:
+        runAsUser: {{ .Values.pod.userID }}
+        runAsGroup: {{ .Values.pod.groupID }}
+      initContainers:
+      - name: download
+        image: {{ .Values.image.registry }}/{{ .Values.image.repo }}:{{ .Values.image.tag }}
+        command:
+        - wget {{ .Values.simulation.url }}
+        - -P user-files/simulations/
+        volumeMounts:
+        - name: simulationdir
+          mountPath: "/opt/gatling/user-files/simulations"
+      containers:
+      - name: gatling
+        image: {{ .Values.image.registry }}/{{ .Values.image.repo }}:{{ .Values.image.tag }}
+        command:
+        - /opt/gatling/bin/gatling.sh
+        args:
+        - -s {{ .Values.simulation.name }}
+        - -rf ./results/nginx/
+        volumeMounts:
+        - name: simulationdir
+          mountPath: "/opt/gatling/user-files/simulations"
+      restartPolicy: {{ .Values.pod.restartPolicy }}
+      volumes:
+      - name: simulationdir
+        emptyDir: {}
