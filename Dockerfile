@@ -2,6 +2,9 @@
 #
 # Documentation: https://gatling.io/docs/3.2/
 # Cheat sheet: https://gatling.io/docs/3.2/cheat-sheet/
+#
+# modified from https://github.com/denvazh/gatling to run
+# as an unprivileged user.
 
 FROM openjdk:8-jdk-alpine
 
