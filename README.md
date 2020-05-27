@@ -37,7 +37,7 @@ metadata:
   labels:
     app: gatling
 data:
-  nginx.NginxSimulation.scala: |
+  NginxSimulation.scala: |
     package nginx
 
     import io.gatling.core.Predef._

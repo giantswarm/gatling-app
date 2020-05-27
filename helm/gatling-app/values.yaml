@@ -33,8 +33,8 @@ simulation:
   configMap:
     name: ""
 
-  # The name of the simulation to run.
-  # e.g. "nginx.NginxSimulation.scala"
+  # The name of the simulation to run, in the format
+  # `package.class`. e.g. "nginx.NginxSimulation"
   name: ""
 
   # The URL is a Gatling simulation configuration which must
