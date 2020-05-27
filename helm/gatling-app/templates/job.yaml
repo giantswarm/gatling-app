@@ -14,12 +14,14 @@ spec:
       securityContext:
         runAsUser: {{ .Values.pod.userID }}
         runAsGroup: {{ .Values.pod.groupID }}
-      initContainers:
       {{- if .Values.simulation.url }}
+      initContainers:
       - name: download
         image: {{ .Values.image.registry }}/{{ .Values.image.repo }}:{{ .Values.image.tag }}
         command:
-        - wget {{ .Values.simulation.url }}
+        - wget
+        args:
+        - {{ .Values.simulation.url }}
         - -P user-files/simulations/
         volumeMounts:
         - name: simulationdir
