@@ -2,7 +2,7 @@ name: gatling
 
 image:
   registry: quay.io
-  repo: giantswarm/gatling
+  repo: giantswarm/gatling-app
   tag: 3.2.1
 
 # Settings to configure the Job spec.
@@ -31,11 +31,11 @@ simulation:
   # providing a simulation via a configMap then it should be
   # created prior to deploying this app.
   configMap:
-    name: ""
+    name: "simulation-configmap"
 
   # The name of the simulation to run, in the format
   # `package.class`. e.g. "nginx.NginxSimulation"
-  name: ""
+  name: "nginx.NginxSimulation"
 
   # The URL is a Gatling simulation configuration which must
   # be hosted at an accessible location. If provided then it
