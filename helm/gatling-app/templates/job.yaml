@@ -15,6 +15,7 @@ spec:
         runAsUser: {{ .Values.pod.userID }}
         runAsGroup: {{ .Values.pod.groupID }}
       initContainers:
+      {{- if .Values.simulation.url }}
       - name: download
         image: {{ .Values.image.registry }}/{{ .Values.image.repo }}:{{ .Values.image.tag }}
         command:
@@ -23,18 +24,24 @@ spec:
         volumeMounts:
         - name: simulationdir
           mountPath: "/opt/gatling/user-files/simulations"
+      {{- end }}
       containers:
       - name: gatling
         image: {{ .Values.image.registry }}/{{ .Values.image.repo }}:{{ .Values.image.tag }}
         command:
-        - /opt/gatling/bin/gatling.sh
+        - gatling.sh
         args:
         - -s {{ .Values.simulation.name }}
-        - -rf ./results/nginx/
+        - -rf ./results/
         volumeMounts:
         - name: simulationdir
           mountPath: "/opt/gatling/user-files/simulations"
       restartPolicy: {{ .Values.pod.restartPolicy }}
       volumes:
       - name: simulationdir
+      {{- if .Values.simulation.url }}
         emptyDir: {}
+      {{- else }}
+        configMap:
+          name: {{ .Values.simulation.configMap.name }}
+      {{- end }}
