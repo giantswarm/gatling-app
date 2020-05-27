@@ -3,9 +3,9 @@ kind: Job
 metadata:
   job: {{ .Values.name }}
 spec:
-  backoffLimit: 5
-  completions: 1
-  parallelism: 1
+  backoffLimit: {{ .Values.job.backoffLimit }}
+  completions: {{ .Values.job.completions }}
+  parallelism: {{ .Values.job.parallelism }}
   template:
     metadata:
       job: {{ .Values.name }}
