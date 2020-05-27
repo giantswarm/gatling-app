@@ -24,7 +24,7 @@ spec:
         - wget
         args:
         - {{ .Values.simulation.url }}
-        - -P user-files/simulations/
+        - -O user-files/simulations/{{ .Values.simulation.filename }}
         volumeMounts:
         - name: simulationdir
           mountPath: "/opt/gatling/user-files/simulations"
@@ -39,7 +39,12 @@ spec:
         - -rf ./results/
         volumeMounts:
         - name: simulationdir
-          mountPath: "/opt/gatling/user-files/simulations"
+      {{- if .Values.simulation.url }}
+          mountpath: "/opt/gatling/user-files/simulations"
+      {{- else }}
+          mountpath: "/opt/gatling/user-files/simulations/{{ .Values.simulation.configMap.filename }}"
+          subPath: {{ .Values.simulation.configMap.filename }}
+      {{- end }}
       restartPolicy: {{ .Values.pod.restartPolicy }}
       volumes:
       - name: simulationdir
@@ -47,6 +52,7 @@ spec:
         emptyDir: {}
       {{- else }}
         configMap:
+          defaultMode: 0666
           name: {{ .Values.simulation.configMap.name }}
           optional: true
       {{- end }}

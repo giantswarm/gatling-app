@@ -3,7 +3,7 @@ name: gatling
 image:
   registry: quay.io
   repo: giantswarm/gatling-app
-  tag: 3.2.1
+  tag: 0.0.0-ae445213c76ac52056ee410ccdb4ddb9e6637658
 
 # Settings to configure the Job spec.
 job:
@@ -26,16 +26,21 @@ pod:
 # Settings under the simulation key are used to customise the
 # Gatling run to your needs.
 simulation:
-  # The name of the configMap containing the simulation to run.
-  # This will be ignored if a URL is provided below. If you are
-  # providing a simulation via a configMap then it should be
-  # created prior to deploying this app.
+  # Simulations provided via configMap will be ignored if a URL
+  # is provided below. If you are providing a simulation via a
+  # configMap then it should be created prior to deploying this
+  # app.
   configMap:
-    name: "simulation-configmap"
+    # The name of the configMap containing the simulation to run.
+    name: ""
+
+  # The filename the simulation will be written out to in the
+  # pod's workdir. e.g. "NginxSimulation.scala"
+  filename: ""
 
   # The name of the simulation to run, in the format
   # `package.class`. e.g. "nginx.NginxSimulation"
-  name: "nginx.NginxSimulation"
+  name: ""
 
   # The URL is a Gatling simulation configuration which must
   # be hosted at an accessible location. If provided then it
