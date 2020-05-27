@@ -10,7 +10,8 @@ spec:
   parallelism: {{ .Values.job.parallelism }}
   template:
     metadata:
-      job: {{ .Values.name }}
+      labels:
+        job: {{ .Values.name }}
     spec:
       serviceAccountName: {{ .Values.name }}
       securityContext:
@@ -27,7 +28,7 @@ spec:
         - -O user-files/simulations/{{ .Values.simulation.filename }}
         volumeMounts:
         - name: simulationdir
-          mountPath: "/opt/gatling/user-files/simulations"
+          mountPath: /opt/gatling/user-files/simulations
       {{- end }}
       containers:
       - name: gatling
@@ -40,10 +41,10 @@ spec:
         volumeMounts:
         - name: simulationdir
       {{- if .Values.simulation.url }}
-          mountpath: "/opt/gatling/user-files/simulations"
+          mountPath: /opt/gatling/user-files/simulations
       {{- else }}
-          mountpath: "/opt/gatling/user-files/simulations/{{ .Values.simulation.configMap.filename }}"
-          subPath: {{ .Values.simulation.configMap.filename }}
+          mountPath: /opt/gatling/user-files/simulations/{{ .Values.simulation.filename }}
+          subPath: {{ .Values.simulation.filename }}
       {{- end }}
       restartPolicy: {{ .Values.pod.restartPolicy }}
       volumes:
