@@ -21,13 +21,13 @@ RUN mkdir -p gatling
 RUN apk add --update wget bash libc6-compat && \
   addgroup -g 1000 -S giantswarm && \
   adduser -u 1000 -S giantswarm -G giantswarm && \
-  chown -R giantswarm.giantswarm /opt/gatling && \
   mkdir -p /tmp/downloads && \
   wget -q -O /tmp/downloads/gatling-$GATLING_VERSION.zip \
   https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/$GATLING_VERSION/gatling-charts-highcharts-bundle-$GATLING_VERSION-bundle.zip && \
   mkdir -p /tmp/archive && cd /tmp/archive && \
   unzip /tmp/downloads/gatling-$GATLING_VERSION.zip && \
   mv /tmp/archive/gatling-charts-highcharts-bundle-$GATLING_VERSION/* /opt/gatling/ && \
+  chown -R giantswarm.giantswarm /opt/gatling && \
   rm -rf /tmp/*
 
 # change context to gatling directory
