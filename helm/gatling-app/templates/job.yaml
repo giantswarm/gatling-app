@@ -22,10 +22,10 @@ spec:
       - name: download
         image: {{ .Values.image.registry }}/{{ .Values.image.repo }}:{{ .Values.image.tag }}
         command:
-        - wget
+        - /bin/bash
         args:
-        - {{ .Values.simulation.url }}
-        - -O user-files/simulations/{{ .Values.simulation.filename }}
+        - -c
+        - "wget -O user-files/simulations/{{ .Values.simulation.filename }} {{ .Values.simulation.url }}"
         volumeMounts:
         - name: simulationdir
           mountPath: /opt/gatling/user-files/simulations
