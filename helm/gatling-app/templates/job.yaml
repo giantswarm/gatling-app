@@ -34,10 +34,10 @@ spec:
       - name: gatling
         image: {{ .Values.image.registry }}/{{ .Values.image.repo }}:{{ .Values.image.tag }}
         command:
-        - gatling.sh
+        - /bin/bash
         args:
-        - -s {{ .Values.simulation.name }}
-        - -rf ./results/
+        - -c
+        - "./bin/gatling.sh --simulation {{ .Values.simulation.name }} --results-folder ./results/"
         volumeMounts:
         - name: simulationdir
       {{- if .Values.simulation.url }}
