@@ -11,7 +11,7 @@ In order to run Gatling, it must be provided with a simulation file which define
 test(s) to run. This configuration can be provided either as a `configMap`, or as a URL
 to a simulation hosted somewhere accessible by the cluster. If the URL method is used
 then an initContainer will download the simulation file before Gatling runs. These
-values can be provided via the `values.yaml` file.
+values must be provided via the `values.yaml` file.
 
 Notes:
 
@@ -25,9 +25,9 @@ Below is a sample configMap which is used to test the performance of an ingress 
 
 Notes:
  - The `configMap` name must be provided via the `simulation.configMap.name` key in
-`values.yaml`
- - The simulation file key (`nginx.NginxSimulation.scala` in the example below) must be a
-valid file name for a simulation Class.
+`values.yaml` (`simulation-configmap` in the example below).
+ - The simulation file key (`NginxSimulation.scala` in the example below) must be a valid
+file name for a simulation Class.
 
 ```
 apiVersion: v1
