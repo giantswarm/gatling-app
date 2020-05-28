@@ -28,6 +28,7 @@ RUN apk add --update wget bash libc6-compat && \
   unzip /tmp/downloads/gatling-$GATLING_VERSION.zip && \
   mv /tmp/archive/gatling-charts-highcharts-bundle-$GATLING_VERSION/* /opt/gatling/ && \
   chown -R giantswarm.giantswarm /opt/gatling && \
+  rm -rf /opt/gatling/user-files/simulations/* && \
   rm -rf /tmp/*
 
 # change context to gatling directory
