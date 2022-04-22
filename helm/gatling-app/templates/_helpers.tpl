@@ -24,6 +24,6 @@ application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantsw
 Selector labels
 */}}
 {{- define "labels.selector" -}}
-app.kubernetes.io/name: {{ .Chart.name | quote }}
+app.kubernetes.io/name: {{ .Chart.Name | quote }}
 app.kubernetes.io/instance: {{ .Release.Name | quote }}
 {{- end -}}
