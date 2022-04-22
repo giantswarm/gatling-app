@@ -15,7 +15,7 @@ Common labels
 app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
 app.kubernetes.io/instance: {{ .Release.Name | quote }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-app.kubernetes.io/part-of: {{ template "name" . }}
+app.kubernetes.io/part-of: {{ template "gatling.name" . }}
 name: {{ include "gatling.name" . | quote }}
 application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" | quote }}
 {{- end -}}
