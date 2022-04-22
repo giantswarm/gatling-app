@@ -5,10 +5,12 @@ metadata:
   name: {{ .Values.name }}-network-policy
   labels:
     app: {{ .Values.name }}
+    application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" }}
 spec:
   podSelector:
     matchLabels:
       app: {{ .Values.name }}
+      application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" }}
   ingress: []
   egress:
   - {}

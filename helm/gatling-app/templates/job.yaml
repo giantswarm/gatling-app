@@ -4,6 +4,7 @@ metadata:
   name: {{ .Values.name }}
   labels:
     job: {{ .Values.name }}
+    application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" }}
 spec:
   backoffLimit: {{ .Values.job.backoffLimit }}
   completions: {{ .Values.job.completions }}
@@ -12,6 +13,7 @@ spec:
     metadata:
       labels:
         job: {{ .Values.name }}
+        application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" }}
     spec:
       serviceAccountName: {{ .Values.name }}
       securityContext:
