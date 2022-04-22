@@ -3,8 +3,7 @@ kind: ClusterRole
 metadata:
   name: {{ .Values.name }}-psp
   labels:
-    app: {{ .Values.name }}
-    application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" }}
+    {{- include "labels.common" . | nindent 4 }}
 rules:
   - apiGroups:
       - extensions

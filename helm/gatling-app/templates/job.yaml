@@ -3,8 +3,7 @@ kind: Job
 metadata:
   name: {{ .Values.name }}
   labels:
-    job: {{ .Values.name }}
-    application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" }}
+    {{- include "labels.common" . | nindent 4 }}
 spec:
   backoffLimit: {{ .Values.job.backoffLimit }}
   completions: {{ .Values.job.completions }}
@@ -12,8 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        job: {{ .Values.name }}
-        application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" }}
+        {{- include "labels.common" . | nindent 8 }}
     spec:
       serviceAccountName: {{ .Values.name }}
       securityContext:

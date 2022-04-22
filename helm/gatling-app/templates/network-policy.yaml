@@ -4,13 +4,11 @@ metadata:
   namespace: {{ .Release.Namespace }}
   name: {{ .Values.name }}-network-policy
   labels:
-    app: {{ .Values.name }}
-    application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" }}
+    {{- include "labels.common" . | nindent 4 }}
 spec:
   podSelector:
     matchLabels:
-      app: {{ .Values.name }}
-      application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantswarm.io/team" }}
+      {{- include "labels.selector" . | nindent 6 }}
   ingress: []
   egress:
   - {}
