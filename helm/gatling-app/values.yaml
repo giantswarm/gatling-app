@@ -3,7 +3,7 @@ name: gatling
 image:
   registry: quay.io
   repo: giantswarm/gatling-app
-  tag: 1.0.2-66a97a5fcc7075d9e24a4bb02a10370afe102ad2
+  tag: 1.0.3
 
 # Settings to configure the Job spec.
 job:
