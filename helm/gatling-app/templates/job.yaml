@@ -39,7 +39,7 @@ spec:
         - /bin/bash
         args:
         - -c
-        - "{{- if .Values.simulation.configMap.name -}}cp /tmp/simulations/*.scala user-files/simulations/ && {{ end -}}./bin/gatling.sh --simulation {{ .Values.simulation.name }} --results-folder ./results/"
+        - "{{- if .Values.simulation.configMap.name -}}cp /tmp/simulations/*.scala user-files/simulations/ && {{ end -}}./bin/gatling.sh --run-mode local --simulation {{ .Values.simulation.name }} --results-folder ./results/"
         volumeMounts:
         - name: simulationdir
       {{- if .Values.simulation.url }}
