@@ -8,25 +8,27 @@ Here we define the Gatling chart with its templates and default configuration.
 ## Required values
 
 In order to run Gatling, it must be provided with a simulation file which defines the
-test(s) to run. This configuration can be provided either as a `configMap`, or as a URL
+test(s) to run. This configuration can be provided either as a `ConfigMap`, or as a URL
 to a simulation hosted somewhere accessible by the cluster. If the URL method is used
-then an initContainer will download the simulation file before Gatling runs. These
+then an init container will download the simulation file before Gatling runs. These
 values must be provided via the `values.yaml` file.
 
 Notes:
- - If you are using the `configMap` method, then it should be created _before_ the app
+ - If you are using the `ConfigMap` method, then it should be created _before_ the app
 is deployed.
- - If you provide a value for `simulation.url` then any `configMap` is ignored.
+ - If you provide a value for `simulation.url` then any `ConfigMap` is ignored.
 
-### `configMap` method
+### `ConfigMap` method
 
-Below is a sample `configMap` which is used to test the performance of an ingress controller.
+Below is a sample `ConfigMap` which is used to test the performance of an ingress controller.
 
 Notes:
- - The `configMap` name must be provided via the `simulation.configMap.name` key in
+ - The `ConfigMap` name must be provided via the `simulation.configmap` key in
 `values.yaml` (`simulation-configmap` in the example below).
- - The simulation file key (`NginxSimulation.scala` in the example below) must be a valid
-file name for a simulation class.
+ - The `simulation.file` key (`NginxSimulation.scala` in the example below) must be a valid
+file name for a simulation file.
+ - The `simulation.class` key (`nginx.NginxSimulation` in the example below) must be a valid
+class name for a simulation class.
 
 ```
 apiVersion: v1
@@ -57,16 +59,15 @@ data:
       val scn = scenario("Nginx basic test")
         .repeat(100, "n") {
           exec(
-            http("request_1")
-	      .get("/")
-            )
+            http("request_1").get("/")
+          )
         }
 
       setUp(
         scn.inject(
           atOnceUsers(1),
           rampUsers(3) during (2 seconds)
-        ).protocols(httpProtocol))
-        .maxDuration(5 minutes)
+        ).protocols(httpProtocol)
+      ).maxDuration(5 minutes)
     }
 ```

@@ -1,0 +1,87 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "gatling-app.fullname" . }}
+  labels:
+    {{- include "gatling-app.labels" . | nindent 4 }}
+spec:
+  backoffLimit: {{ .Values.backoffLimit }}
+  completions: {{ .Values.completions }}
+  parallelism: {{ .Values.parallelism }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "gatling-app.labels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "gatling-app.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if .Values.simulation.url }}
+      initContainers:
+      - name: download
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 10 }}
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command:
+        - wget
+        args:
+        - {{ .Values.simulation.url }}
+        - --output-document
+        - user-files/simulations/{{ .Values.simulation.file }}
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+        volumeMounts:
+        - name: simulations
+          mountPath: /opt/gatling/user-files/simulations
+      {{- end }}
+      containers:
+      - name: {{ .Chart.Name }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 10 }}
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command:
+        - bin/gatling.sh
+        args:
+        - --run-mode
+        - local
+        - --simulation
+        - {{ .Values.simulation.class }}
+        - --results-folder
+        - results
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+        volumeMounts:
+        - name: simulations
+          subPath: {{ .Values.simulation.file }}
+          mountPath: /opt/gatling/user-files/simulations/{{ .Values.simulation.file }}
+      restartPolicy: {{ .Values.restartPolicy }}
+      volumes:
+      - name: simulations
+      {{- if .Values.simulation.url }}
+        emptyDir: {}
+      {{- else }}
+        configMap:
+          name: {{ .Values.simulation.configmap }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
