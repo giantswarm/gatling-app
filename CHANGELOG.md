@@ -10,10 +10,11 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 ### Changed
 
 - Update Gatling to v3.8.3.
-
-### Fixes
-
 - Set run mode.
+
+### Removed
+
+- Remove `PodSecurityPolicy`. Will be replaced in the future. Use `restricted` in the meantime.
 
 ## [1.0.3] - 2022-08-08
 
