@@ -3,8 +3,7 @@
 # Documentation: https://gatling.io/docs/3.2/
 # Cheat sheet: https://gatling.io/docs/3.2/cheat-sheet/
 #
-# modified from https://github.com/denvazh/gatling to run
-# as an unprivileged user.
+# Source: https://github.com/denvazh/gatling
 
 FROM openjdk:18-jdk-alpine
 
@@ -28,7 +27,6 @@ RUN apk add --update wget bash libc6-compat && \
   unzip /tmp/downloads/gatling-$GATLING_VERSION.zip && \
   mv /tmp/archive/gatling-charts-highcharts-bundle-$GATLING_VERSION/* /opt/gatling/ && \
   chown -R giantswarm.giantswarm /opt/gatling && \
-  rm -rf /opt/gatling/user-files/simulations/* && \
   rm -rf /tmp/*
 
 # change context to gatling directory
