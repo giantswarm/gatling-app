@@ -10,6 +10,7 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 ### Changed
 
 - Update Gatling to v3.8.3.
+- Set run mode.
 
 ### Removed
 
