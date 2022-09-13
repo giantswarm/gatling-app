@@ -11,6 +11,7 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 - Update Gatling to v3.8.3.
 - Set run mode.
+- Rename network-policy.yaml -> networkpolicy.yaml.
 
 ### Removed
 
