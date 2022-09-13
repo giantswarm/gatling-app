@@ -7,6 +7,10 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Changed
+
+- Update Gatling to v3.8.3.
+
 ## [1.0.3] - 2022-08-08
 
 ### Added
