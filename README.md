@@ -2,7 +2,7 @@
 
 # gatling-app chart
 
-Giant Swarm offers a Gatling Managed App which can be installed in tenant clusters.
+Giant Swarm offers a Gatling Managed App which can be installed in workload clusters.
 Here we define the Gatling chart with its templates and default configuration.
 
 ## Required values
@@ -14,20 +14,19 @@ then an initContainer will download the simulation file before Gatling runs. The
 values must be provided via the `values.yaml` file.
 
 Notes:
-
  - If you are using the `configMap` method, then it should be created _before_ the app
 is deployed.
- - If you provide a value for `simulation.url` then any configMap is ignored.
+ - If you provide a value for `simulation.url` then any `configMap` is ignored.
 
 ### `configMap` method
 
-Below is a sample configMap which is used to test the performance of an ingress controller.
+Below is a sample `configMap` which is used to test the performance of an ingress controller.
 
 Notes:
  - The `configMap` name must be provided via the `simulation.configMap.name` key in
 `values.yaml` (`simulation-configmap` in the example below).
  - The simulation file key (`NginxSimulation.scala` in the example below) must be a valid
-file name for a simulation Class.
+file name for a simulation class.
 
 ```
 apiVersion: v1
