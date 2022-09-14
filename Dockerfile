@@ -2,7 +2,7 @@
 FROM eclipse-temurin:18-jdk-alpine
 
 # Download Gatling.
-ENV GATLING_VERSION 3.8.3
+ENV GATLING_VERSION 3.8.4
 ADD https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/${GATLING_VERSION}/gatling-charts-highcharts-bundle-${GATLING_VERSION}-bundle.zip /tmp/gatling.zip
 RUN unzip /tmp/gatling.zip -d /tmp
 
