@@ -1,13 +1,12 @@
-apiVersion: v1
-appVersion: "3.8.3"
-description: "Async Scala-Akka-Netty based Load Test Tool "
-engine: gotpl
-home: https://github.com/giantswarm/gatling-app
-icon: https://s.giantswarm.io/app-icons/1/png/gatling-app-light.png
+apiVersion: v2
 name: gatling-app
+description: Gatling is a load test tool. It officially supports HTTP, WebSocket, Server-Sent-Events and JMS.
+type: application
+version: 2.0.0
+appVersion: "3.8.3"
+home: https://github.com/giantswarm/gatling-app
+icon: https://s.giantswarm.io/app-icons/gatling/1/light.svg
 sources:
-- https://raw.githubusercontent.com/giantswarm/gatling-app/v[[ .Version ]]/README.md
 - https://github.com/gatling/gatling
-version: [[ .Version ]]
 annotations:
   application.giantswarm.io/team: team-cabbage

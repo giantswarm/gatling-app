@@ -1,54 +1,73 @@
-name: gatling
+# Default values for gatling-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
 
 image:
   registry: quay.io
-  repo: giantswarm/gatling-app
+  repository: giantswarm/gatling-app
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
   tag: 1.1.0
 
-# Settings to configure the Job spec.
-job:
-  # Attempt to run the job 5 times before marking as failed.
-  backoffLimit: 5
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
 
-  # Set the number of successful pod completions required to
-  # consider the job as complete.
-  completions: 1
-
-  # Set the maximum amount of pods allowed to run at the same
-  # time.
-  parallelism: 1
-
-pod:
-  userID: 1000
-  groupID: 1000
-  restartPolicy: OnFailure
-
-# Settings under the simulation key are used to customise the
-# Gatling run to your needs.
-simulation:
-  # Simulations provided via configMap will be ignored if a URL
-  # is provided below. If you are providing a simulation via a
-  # configMap then it should be created prior to deploying this
-  # app.
-  configMap:
-    # The name of the configMap containing the simulation to run.
-    name: ""
-
-  # The filename the simulation will be written out to in the
-  # pod's workdir. e.g. "NginxSimulation.scala"
-  filename: ""
-
-  # The name of the simulation to run, in the format
-  # `package.class`. e.g. "nginx.NginxSimulation"
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-  # The URL is a Gatling simulation configuration which must
-  # be hosted at an accessible location. If provided then it
-  # overrides any simulation configMaps.
+# Attempts to run the job before marking as failed.
+backoffLimit: 5
+
+# Number of successful pod completions required to consider the job as complete.
+completions: 1
+
+# Maximum amount of pods allowed to run at the same time.
+parallelism: 1
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+simulation:
+  # Configmap containing simulation file(s) (e.g. simulation-configmap).
+  configmap: ""
+  # URL to get simulation file from.
   url: ""
 
-# Enable and give a proper NodeSelector to run the simulation on
-# a specific cluster node.
-nodeAffinity:
-  enabled: false
-  selector: {}
+  # Simulation file name (e.g. NginxSimulation.scala).
+  file: ""
+  # Simulation class name (e.g. nginx.NginxSimulation).
+  class: ""
+
+securityContext:
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+# Container restart policy in case of failure.
+restartPolicy: OnFailure
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

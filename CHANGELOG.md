@@ -7,6 +7,14 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Changed
+
+- Complete rework based on fresh Helm chart. Following app related keys of the `values.yaml` changed:
+  - `job.*` moved to top-level.
+  - `simulation.configMap.name` -> `simulation.configmap`.
+  - `simulation.filename` -> `simulation.file`.
+  - `simulation.name` -> `simulation.class`.
+
 ## [1.1.0] - 2022-09-13
 
 ### Changed
