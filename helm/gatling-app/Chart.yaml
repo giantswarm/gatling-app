@@ -7,6 +7,6 @@ appVersion: "3.8.3"
 home: https://github.com/giantswarm/gatling-app
 icon: https://s.giantswarm.io/app-icons/gatling/1/light.svg
 sources:
-- https://github.com/gatling/gatling
+  - https://github.com/gatling/gatling
 annotations:
   application.giantswarm.io/team: team-cabbage
