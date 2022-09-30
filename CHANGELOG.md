@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+## [2.0.2] - 2022-09-30
+
 ## [2.0.1] - 2022-09-14
 
 ### Changed
@@ -53,7 +55,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 - Initial configuration of the helm chart and supporting documentation ([#1](https://github.com/giantswarm/gatling-app/pull/1))
 
-[Unreleased]: https://github.com/giantswarm/gatling-app/compare/v2.0.1...HEAD
+[Unreleased]: https://github.com/giantswarm/gatling-app/compare/v2.0.2...HEAD
+[2.0.2]: https://github.com/giantswarm/gatling-app/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/giantswarm/gatling-app/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/giantswarm/gatling-app/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/giantswarm/gatling-app/compare/v1.0.3...v1.1.0
