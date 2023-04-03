@@ -23,6 +23,8 @@ workflows:
           app_catalog_test: giantswarm-playground-test-catalog
           chart: gatling-app
           executor: app-build-suite
+          requires:
+            - push-to-quay
           filters:
             tags:
               only: /^v.*/
