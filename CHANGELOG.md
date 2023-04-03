@@ -9,6 +9,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [2.0.3] - 2023-04-03
 
+## [2.0.3] - 2023-04-03
+
 - Bump eclipse-temurin from 19-jdk-alpine to 20-jdk-alpine ([#110](https://github.com/giantswarm/gatling-app/pull/110))
 
 ## [2.0.2] - 2022-09-30
@@ -60,6 +62,7 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 - Initial configuration of the helm chart and supporting documentation ([#1](https://github.com/giantswarm/gatling-app/pull/1))
 
 [Unreleased]: https://github.com/giantswarm/gatling-app/compare/v2.0.3...HEAD
+[2.0.3]: https://github.com/giantswarm/gatling-app/compare/v2.0.3...v2.0.3
 [2.0.3]: https://github.com/giantswarm/gatling-app/compare/v2.0.2...v2.0.3
 [2.0.2]: https://github.com/giantswarm/gatling-app/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/giantswarm/gatling-app/compare/v2.0.0...v2.0.1
