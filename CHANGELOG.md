@@ -7,6 +7,10 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Changed
+
+- Bump eclipse-temurin from 19-jdk-alpine to 20-jdk-alpine ([#110](https://github.com/giantswarm/gatling-app/pull/110))
+
 ## [2.0.2] - 2022-09-30
 
 ## [2.0.1] - 2022-09-14
