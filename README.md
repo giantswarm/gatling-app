@@ -25,9 +25,9 @@ Below is a sample `ConfigMap` which is used to test the performance of an ingres
 Notes:
  - The `ConfigMap` name must be provided via the `simulation.configmap` key in
 `values.yaml` (`simulation-configmap` in the example below).
- - The `simulation.file` key (`NginxSimulation.scala` in the example below) must be a valid
+ - The `simulation.file` key (`IngressSimulation.scala` in the example below) must be a valid
 file name for a simulation file.
- - The `simulation.class` key (`nginx.NginxSimulation` in the example below) must be a valid
+ - The `simulation.class` key (`ingress.IngressSimulation` in the example below) must be a valid
 class name for a simulation class.
 
 ```
@@ -38,17 +38,17 @@ metadata:
   labels:
     app: gatling
 data:
-  NginxSimulation.scala: |
-    package nginx
+  IngressSimulation.scala: |
+    package ingress
 
     import io.gatling.core.Predef._
     import io.gatling.http.Predef._
     import scala.concurrent.duration._
 
-    class NginxSimulation extends Simulation {
+    class IngressSimulation extends Simulation {
 
       val httpProtocol = http
-        .baseUrl("http://nginx-ingress-controller.kube-system.svc.cluster.local")
+        .baseUrl("http://ingress-nginx-controller.kube-system.svc.cluster.local")
         .header("Host", "loadtest.local")
         .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
         .doNotTrackHeader("1")
@@ -56,7 +56,7 @@ data:
         .acceptEncodingHeader("gzip, deflate")
         .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0) Gecko/20100101 Firefox/16.0")
 
-      val scn = scenario("Nginx basic test")
+      val scn = scenario("basic ingress test")
         .repeat(100, "n") {
           exec(
             http("request_1").get("/")

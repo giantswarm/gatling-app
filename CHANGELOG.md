@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+- Values: Rename `nginx-ingress-controller` to `ingress-nginx`. ([#123](https://github.com/giantswarm/gatling-app/pull/123))
+
 ## [2.0.3] - 2023-04-03
 
 ### Changed
