@@ -42,9 +42,9 @@ simulation:
   # URL to get simulation file from.
   url: ""
 
-  # Simulation file name (e.g. NginxSimulation.scala).
+  # Simulation file name (e.g. IngressSimulation.scala).
   file: ""
-  # Simulation class name (e.g. nginx.NginxSimulation).
+  # Simulation class name (e.g. ingress.IngressSimulation).
   class: ""
 
 securityContext:
