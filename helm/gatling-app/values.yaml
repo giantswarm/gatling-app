@@ -48,12 +48,15 @@ simulation:
   class: ""
 
 securityContext:
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1000
+  allowPrivilegesEscalation: false
+  seccompProfile:
+    type: Runtime/Default
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
 
 resources:
   limits:

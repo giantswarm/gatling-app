@@ -33,8 +33,12 @@ Gatling is a load test tool. It officially supports HTTP, WebSocket, Server-Sent
 | resources.requests.cpu | string | `"250m"` |  |
 | resources.requests.memory | string | `"256Mi"` |  |
 | restartPolicy | string | `"OnFailure"` |  |
+| securityContext.allowPrivilegesEscalation | bool | `false` |  |
+| securityContext.capabilities.drop[0] | string | `"ALL"` |  |
+| securityContext.readOnlyRootFilesystem | bool | `true` |  |
 | securityContext.runAsNonRoot | bool | `true` |  |
 | securityContext.runAsUser | int | `1000` |  |
+| securityContext.seccompProfile.type | string | `"Runtime/Default"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
