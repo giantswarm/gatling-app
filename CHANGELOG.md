@@ -15,7 +15,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 ### Changed
 
 - Values: Rename `nginx-ingress-controller` to `ingress-nginx`. ([#123](https://github.com/giantswarm/gatling-app/pull/123))
-- Do not install PodSecurityPolicy if api not available.
+- Pod Security Policy: Skip if API unavailable. ([#127](https://github.com/giantswarm/gatling-app/pull/127))
+- Bump eclipse-temurin from 20-jdk-alpine to 21-jdk-alpine ([#130](https://github.com/giantswarm/gatling-app/pull/130))
 - Docker: Update Gatling to 3.9.5. ([#129](https://github.com/giantswarm/gatling-app/pull/129))
 - Values: Tighten `securityContext`. ([#129](https://github.com/giantswarm/gatling-app/pull/129))
 
