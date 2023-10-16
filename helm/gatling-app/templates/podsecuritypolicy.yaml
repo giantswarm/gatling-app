@@ -2,11 +2,11 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: {{ include "gatling-app.fullname" . }}
+  name: {{ include "gatling.fullname" . }}
   annotations:
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: "*"
   labels:
-    {{- include "gatling-app.labels" . | nindent 4 }}
+    {{- include "gatling.labels" . | nindent 4 }}
 spec:
   privileged: false
   hostPID: false

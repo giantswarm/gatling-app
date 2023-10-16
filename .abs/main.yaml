@@ -1,4 +1,4 @@
-chart-dir: helm/gatling-app
+chart-dir: helm/gatling
 replace-chart-version-with-git: true
 generate-metadata: true
 catalog-base-url: https://giantswarm.github.io/giantswarm-catalog/

@@ -20,7 +20,7 @@ workflows:
           name: push-to-giantswarm-playground-catalog
           context: architect
           executor: app-build-suite
-          chart: gatling-app
+          chart: gatling
           app_catalog: giantswarm-playground-catalog
           app_catalog_test: giantswarm-playground-test-catalog
           requires:

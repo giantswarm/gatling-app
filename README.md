@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/giantswarm/gatling-app.svg?style=shield)](https://circleci.com/gh/giantswarm/gatling-app)
 
-# gatling-app chart
+# Gatling
 
 Giant Swarm offers a Gatling Managed App which can be installed in workload clusters. Here we define the Gatling chart with its templates and default configuration.
 
