@@ -95,7 +95,7 @@
         "securityContext": {
             "type": "object",
             "properties": {
-                "allowPrivilegesEscalation": {
+                "allowPrivilegeEscalation": {
                     "type": "boolean"
                 },
                 "capabilities": {

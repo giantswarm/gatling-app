@@ -50,13 +50,13 @@ simulation:
 securityContext:
   runAsNonRoot: true
   runAsUser: 1000
-  allowPrivilegesEscalation: false
+  allowPrivilegeEscalation: false
   seccompProfile:
-    type: Runtime/Default
+    type: RuntimeDefault
   capabilities:
     drop:
     - ALL
-  readOnlyRootFilesystem: true
+  readOnlyRootFilesystem: false
 
 resources:
   limits:
