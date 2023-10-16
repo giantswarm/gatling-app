@@ -7,6 +7,10 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+### Added
+
+- Job: Use `emptyDir` for results. ([#129](https://github.com/giantswarm/gatling-app/pull/129))
+
 ### Changed
 
 - Values: Rename `nginx-ingress-controller` to `ingress-nginx`. ([#123](https://github.com/giantswarm/gatling-app/pull/123))

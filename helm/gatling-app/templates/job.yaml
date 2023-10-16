@@ -62,6 +62,8 @@ spec:
         - name: simulations
           subPath: {{ .Values.simulation.file }}
           mountPath: /opt/gatling/user-files/simulations/{{ .Values.simulation.file }}
+        - name: results
+          mountPath: /opt/gatling/results
       restartPolicy: {{ .Values.restartPolicy }}
       volumes:
       - name: simulations
@@ -71,6 +73,8 @@ spec:
         configMap:
           name: {{ .Values.simulation.configmap }}
       {{- end }}
+      - name: results
+        emptyDir: {}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
