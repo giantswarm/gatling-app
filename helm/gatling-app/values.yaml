@@ -37,7 +37,7 @@ podSecurityContext: {}
   # fsGroup: 2000
 
 simulation:
-  # Configmap containing simulation file(s) (e.g. simulation-configmap).
+  # Configmap containing simulation file(s) (e.g. gatling-simulations).
   configmap: ""
   # URL to get simulation file from.
   url: ""
@@ -48,12 +48,15 @@ simulation:
   class: ""
 
 securityContext:
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1000
+  allowPrivilegesEscalation: false
+  seccompProfile:
+    type: Runtime/Default
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
 
 resources:
   limits:
@@ -71,3 +74,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+global:
+  podSecurityStandards:
+    enforced: false

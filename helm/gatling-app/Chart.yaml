@@ -3,7 +3,7 @@ name: gatling-app
 description: Gatling is a load test tool. It officially supports HTTP, WebSocket, Server-Sent-Events and JMS.
 type: application
 version: 2.0.3
-appVersion: "3.8.4"
+appVersion: "3.9.5"
 home: https://github.com/giantswarm/gatling-app
 icon: https://s.giantswarm.io/app-icons/gatling/1/light.svg
 sources:
