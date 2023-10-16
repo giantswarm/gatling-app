@@ -18,6 +18,7 @@ Gatling is a load test tool. It officially supports HTTP, WebSocket, Server-Sent
 | backoffLimit | int | `5` |  |
 | completions | int | `1` |  |
 | fullnameOverride | string | `""` |  |
+| global.podSecurityStandards.enforced | bool | `false` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.registry | string | `"quay.io"` |  |
 | image.repository | string | `"giantswarm/gatling-app"` |  |

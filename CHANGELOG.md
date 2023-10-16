@@ -10,6 +10,7 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 ### Added
 
 - Job: Use `emptyDir` for results. ([#129](https://github.com/giantswarm/gatling-app/pull/129))
+- Values: Add `global.podSecurityStandards.enforced`. ([#129](https://github.com/giantswarm/gatling-app/pull/129))
 
 ### Changed
 
