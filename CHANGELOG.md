@@ -19,6 +19,7 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 - Bump eclipse-temurin from 20-jdk-alpine to 21-jdk-alpine ([#130](https://github.com/giantswarm/gatling-app/pull/130))
 - Docker: Update Gatling to 3.9.5. ([#129](https://github.com/giantswarm/gatling-app/pull/129))
 - Values: Tighten `securityContext`. ([#129](https://github.com/giantswarm/gatling-app/pull/129))
+- Repository: Update example simulation. ([#131](https://github.com/giantswarm/gatling-app/pull/131))
 
 ## [2.0.3] - 2023-04-03
 

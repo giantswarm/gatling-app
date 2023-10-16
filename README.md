@@ -25,7 +25,7 @@ Notes:
  - The `simulation.file` key (`IngressSimulation.scala` in the example below) must be a valid file name for a simulation file.
  - The `simulation.class` key (`ingress.IngressSimulation` in the example below) must be a valid class name for a simulation class.
 
-```scala
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -34,33 +34,28 @@ data:
   IngressSimulation.scala: |
     package ingress
 
+    import scala.concurrent.duration._
+
     import io.gatling.core.Predef._
     import io.gatling.http.Predef._
-    import scala.concurrent.duration._
 
     class IngressSimulation extends Simulation {
 
       val httpProtocol = http
-        .baseUrl("http://ingress-nginx-controller.kube-system.svc.cluster.local")
-        .header("Host", "loadtest.local")
+        .baseUrl("http://hello.cluster.k8s.installation.region.provider.gigantic.io")
         .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
         .doNotTrackHeader("1")
         .acceptLanguageHeader("en-US,en;q=0.5")
         .acceptEncodingHeader("gzip, deflate")
-        .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0) Gecko/20100101 Firefox/16.0")
+        .userAgentHeader("Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0")
 
-      val scn = scenario("basic ingress test")
-        .repeat(100, "n") {
-          exec(
-            http("request_1").get("/")
-          )
-        }
+      val scn = scenario("IngressSimulation")
+        .exec(http("request_1")
+          .get("/"))
+        .pause(5)
 
       setUp(
-        scn.inject(
-          atOnceUsers(1),
-          rampUsers(3) during (2 seconds)
-        ).protocols(httpProtocol)
-      ).maxDuration(5 minutes)
+        scn.inject(atOnceUsers(1))
+      ).protocols(httpProtocol)
     }
 ```
