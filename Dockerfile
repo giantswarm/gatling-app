@@ -1,12 +1,12 @@
-# Start from Eclipse Temurin JDK 18.
+# Start from Eclipse Temurin JDK 21.
 FROM eclipse-temurin:21-jdk-alpine
 
 # Download Gatling.
-ENV GATLING_VERSION 3.8.4
+ARG GATLING_VERSION=3.9.5
 ADD https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/${GATLING_VERSION}/gatling-charts-highcharts-bundle-${GATLING_VERSION}-bundle.zip /tmp/gatling.zip
 RUN unzip /tmp/gatling.zip -d /tmp
 
-# Start from Eclipse Temurin JDK 18.
+# Start from Eclipse Temurin JDK 21.
 FROM eclipse-temurin:21-jdk-alpine
 
 # Create user & install dependencies.
