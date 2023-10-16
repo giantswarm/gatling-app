@@ -7,6 +7,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 ## [Unreleased]
 
+## [3.0.0] - 2023-10-16
+
 ### Added
 
 - Job: Use `emptyDir` for results. ([#129](https://github.com/giantswarm/gatling-app/pull/129))
@@ -78,7 +80,8 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 
 - Initial configuration of the helm chart and supporting documentation ([#1](https://github.com/giantswarm/gatling-app/pull/1))
 
-[Unreleased]: https://github.com/giantswarm/gatling-app/compare/v2.0.3...HEAD
+[Unreleased]: https://github.com/giantswarm/gatling-app/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/giantswarm/gatling-app/compare/v2.0.3...v3.0.0
 [2.0.3]: https://github.com/giantswarm/gatling-app/compare/v2.0.2...v2.0.3
 [2.0.2]: https://github.com/giantswarm/gatling-app/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/giantswarm/gatling-app/compare/v2.0.0...v2.0.1
