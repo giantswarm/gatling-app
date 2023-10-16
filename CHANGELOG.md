@@ -22,6 +22,7 @@ and this project's packages adheres to [Semantic Versioning](http://semver.org/s
 - Repository: Update example simulation. ([#131](https://github.com/giantswarm/gatling-app/pull/131))
 - Values: Fix typos. ([#131](https://github.com/giantswarm/gatling-app/pull/131))
 - Job: Use RW root filesystem. ([#131](https://github.com/giantswarm/gatling-app/pull/131))
+- Docker: Revert `eclipse-temurin` to `17-jdk`. ([#135](https://github.com/giantswarm/gatling-app/pull/135))
 
 ## [2.0.3] - 2023-04-03
 
