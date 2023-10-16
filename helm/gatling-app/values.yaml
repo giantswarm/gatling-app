@@ -37,7 +37,7 @@ podSecurityContext: {}
   # fsGroup: 2000
 
 simulation:
-  # Configmap containing simulation file(s) (e.g. simulation-configmap).
+  # Configmap containing simulation file(s) (e.g. gatling-simulations).
   configmap: ""
   # URL to get simulation file from.
   url: ""

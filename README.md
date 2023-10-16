@@ -21,7 +21,7 @@ Notes:
 Below is a sample `ConfigMap` which is used to test the performance of an Ingress Controller.
 
 Notes:
- - The `ConfigMap` name must be provided via the `simulation.configmap` key in `values.yaml` (`simulation-configmap` in the example below).
+ - The `ConfigMap` name must be provided via the `simulation.configmap` key in `values.yaml` (`gatling-simulations` in the example below).
  - The `simulation.file` key (`IngressSimulation.scala` in the example below) must be a valid file name for a simulation file.
  - The `simulation.class` key (`ingress.IngressSimulation` in the example below) must be a valid class name for a simulation class.
 
@@ -29,9 +29,7 @@ Notes:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: simulation-configmap
-  labels:
-    app: gatling
+  name: gatling-simulations
 data:
   IngressSimulation.scala: |
     package ingress
