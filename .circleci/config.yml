@@ -1,14 +1,14 @@
 version: 2.1
 
 orbs:
-  architect: giantswarm/architect@4.31.0
+  architect: giantswarm/architect@4.33.0
 
 workflows:
   build:
     jobs:
       - architect/push-to-docker:
-          context: architect
           name: push-to-quay
+          context: architect
           image: quay.io/giantswarm/gatling-app
           username_envar: QUAY_USERNAME
           password_envar: QUAY_PASSWORD
@@ -17,12 +17,12 @@ workflows:
               only: /^v.*/
 
       - architect/push-to-app-catalog:
+          name: push-to-giantswarm-playground-catalog
           context: architect
-          name: push-to-app-catalog
+          executor: app-build-suite
+          chart: gatling-app
           app_catalog: giantswarm-playground-catalog
           app_catalog_test: giantswarm-playground-test-catalog
-          chart: gatling-app
-          executor: app-build-suite
           requires:
             - push-to-quay
           filters:
