@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "gatling-app.name" -}}
+{{- define "gatling.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "gatling-app.fullname" -}}
+{{- define "gatling.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "gatling-app.chart" -}}
+{{- define "gatling.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "gatling-app.labels" -}}
-helm.sh/chart: {{ include "gatling-app.chart" . }}
-{{ include "gatling-app.selectorLabels" . }}
+{{- define "gatling.labels" -}}
+helm.sh/chart: {{ include "gatling.chart" . }}
+{{ include "gatling.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -46,17 +46,17 @@ application.giantswarm.io/team: {{ index .Chart.Annotations "application.giantsw
 {{/*
 Selector labels
 */}}
-{{- define "gatling-app.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "gatling-app.name" . }}
+{{- define "gatling.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "gatling.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "gatling-app.serviceAccountName" -}}
+{{- define "gatling.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "gatling-app.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "gatling.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

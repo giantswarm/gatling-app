@@ -2,15 +2,15 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "gatling-app.fullname" . }}
+  name: {{ include "gatling.fullname" . }}
   labels:
-    {{- include "gatling-app.labels" . | nindent 4 }}
+    {{- include "gatling.labels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ include "gatling-app.fullname" . }}
+  name: {{ include "gatling.fullname" . }}
 subjects:
 - kind: ServiceAccount
-  name: {{ include "gatling-app.serviceAccountName" . }}
+  name: {{ include "gatling.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
 {{- end }}

@@ -1,5 +1,5 @@
 apiVersion: v2
-name: gatling-app
+name: gatling
 description: Gatling is a load test tool. It officially supports HTTP, WebSocket, Server-Sent-Events and JMS.
 type: application
 version: 2.0.3
