@@ -2,35 +2,30 @@
 
 # gatling-app chart
 
-Giant Swarm offers a Gatling Managed App which can be installed in workload clusters.
-Here we define the Gatling chart with its templates and default configuration.
+Giant Swarm offers a Gatling Managed App which can be installed in workload clusters. Here we define the Gatling chart with its templates and default configuration.
 
 ## Required values
 
-In order to run Gatling, it must be provided with a simulation file which defines the
-test(s) to run. This configuration can be provided either as a `ConfigMap`, or as a URL
-to a simulation hosted somewhere accessible by the cluster. If the URL method is used
-then an init container will download the simulation file before Gatling runs. These
-values must be provided via the `values.yaml` file.
+In order to run Gatling, it must be provided with a simulation file which defines the test(s) to run. This configuration can be provided either as a `ConfigMap` or as a URL to a simulation hosted somewhere accessible by the cluster.
+
+If the URL method is used then an init container will download the simulation file before Gatling runs.
+
+These values must be provided via the `values.yaml` file.
 
 Notes:
- - If you are using the `ConfigMap` method, then it should be created _before_ the app
-is deployed.
+ - If you are using the `ConfigMap` method, then it should be created _before_ the app is deployed.
  - If you provide a value for `simulation.url` then any `ConfigMap` is ignored.
 
 ### `ConfigMap` method
 
-Below is a sample `ConfigMap` which is used to test the performance of an ingress controller.
+Below is a sample `ConfigMap` which is used to test the performance of an Ingress Controller.
 
 Notes:
- - The `ConfigMap` name must be provided via the `simulation.configmap` key in
-`values.yaml` (`simulation-configmap` in the example below).
- - The `simulation.file` key (`IngressSimulation.scala` in the example below) must be a valid
-file name for a simulation file.
- - The `simulation.class` key (`ingress.IngressSimulation` in the example below) must be a valid
-class name for a simulation class.
+ - The `ConfigMap` name must be provided via the `simulation.configmap` key in `values.yaml` (`simulation-configmap` in the example below).
+ - The `simulation.file` key (`IngressSimulation.scala` in the example below) must be a valid file name for a simulation file.
+ - The `simulation.class` key (`ingress.IngressSimulation` in the example below) must be a valid class name for a simulation class.
 
-```
+```scala
 apiVersion: v1
 kind: ConfigMap
 metadata:
