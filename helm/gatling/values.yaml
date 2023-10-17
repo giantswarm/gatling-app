@@ -59,12 +59,12 @@ securityContext:
   readOnlyRootFilesystem: false
 
 resources:
-  limits:
-    cpu: 500m
-    memory: 512Mi
   requests:
     cpu: 250m
     memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
 
 # Container restart policy in case of failure.
 restartPolicy: OnFailure
