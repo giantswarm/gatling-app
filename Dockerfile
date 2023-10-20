@@ -1,5 +1,5 @@
 # Start from Eclipse Temurin JDK 17.
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:21-jdk
 
 # Install dependencies.
 RUN apt-get update && apt-get install --assume-yes unzip
@@ -10,7 +10,7 @@ ADD https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highchar
 RUN unzip /tmp/gatling.zip -d /tmp
 
 # Start from Eclipse Temurin JDK 17.
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:21-jdk
 
 # Create user.
 RUN addgroup --system --gid 1000 gatling && adduser --ingroup gatling --system --uid 1000 gatling
