@@ -13,7 +13,7 @@ RUN unzip /tmp/gatling.zip -d /tmp
 FROM eclipse-temurin:17-jdk
 
 # Create user.
-RUN addgroup --system --gid 1000 gatling && adduser --ingroup gatling --system --uid 1000 gatling
+RUN adduser --system --uid 1000 gatling
 
 # Setup working directory.
 COPY --from=0 --chown=gatling:gatling /tmp/gatling-* /opt/gatling
